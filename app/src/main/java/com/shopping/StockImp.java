@@ -11,8 +11,12 @@ public class StockImp implements Stock {
 
     public StockImp() {
         mStockTypes = new HashMap<>();
-        mStockTypes.put(StockType.APPLE, new StockItem(StockType.APPLE, Costs.APPLE));
-        mStockTypes.put(StockType.ORANGE, new StockItem(StockType.ORANGE, Costs.ORANGE));
+        StockItem appleStock = new StockItem(StockType.APPLE, Costs.APPLE);
+        appleStock.setDiscount(new BuyOneGetOneFree(appleStock.getStockCost()));
+        StockItem orangeStock = new StockItem(StockType.ORANGE, Costs.ORANGE);
+        orangeStock.setDiscount(new ThreeForPriceOfTwo(orangeStock.getStockCost()));
+        mStockTypes.put(StockType.APPLE, appleStock);
+        mStockTypes.put(StockType.ORANGE, orangeStock);
     }
     @Override
     public int getStock() {
@@ -25,7 +29,7 @@ public class StockImp implements Stock {
     }
 
     @Override
-    public StockItem getItemCost(StockType stockType) {
+    public StockItem getStockItem(StockType stockType) {
         return mStockTypes.get(stockType);
     }
 

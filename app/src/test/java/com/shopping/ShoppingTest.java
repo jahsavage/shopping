@@ -11,14 +11,10 @@ import static junit.framework.Assert.assertEquals;
 public class ShoppingTest {
 
     private Stock mStock;
-    private Double mAppleItemCost;
-    private Double mOrangeItemCost;
 
     @Before
     public void init() {
         mStock = new StockImp();
-        mAppleItemCost = .6d;
-        mOrangeItemCost = .25d;
     }
 
     @Test
@@ -44,7 +40,7 @@ public class ShoppingTest {
 
     @Test
     public void checkStockCosts() {
-        assertEquals(mAppleItemCost, mStock.getItemCost(StockType.APPLE).getStockCost());
-        assertEquals(mOrangeItemCost, mStock.getItemCost(StockType.ORANGE).getStockCost());
+        assertEquals(TestCosts.APPLE, mStock.getStockItem(StockType.APPLE).getStockCost());
+        assertEquals(TestCosts.ORANGE, mStock.getStockItem(StockType.ORANGE).getStockCost());
     }
 }

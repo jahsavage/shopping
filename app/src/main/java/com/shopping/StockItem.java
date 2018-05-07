@@ -3,6 +3,7 @@ package com.shopping;
 public class StockItem {
     StockType mStockType;
     Double mStockCost;
+    Discount mDiscount;
 
     public StockItem(StockType stockType, Double stockCost) {
         mStockType = stockType;
@@ -22,5 +23,18 @@ public class StockItem {
 
     public void setStockCost(Double stockCost) {
         mStockCost = stockCost;
+    }
+
+    public Discount getDiscount() {
+        return mDiscount;
+    }
+
+    public void setDiscount(Discount discount) {
+        mDiscount = discount;
+    }
+
+    public boolean hasDiscount() {
+        return mDiscount != null;
+
     }
 }

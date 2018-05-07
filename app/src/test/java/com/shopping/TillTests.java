@@ -12,7 +12,8 @@ public class TillTests {
 
     @Before
     public void init() {
-        mTill = new TillImp(new StockImp());
+        StockImp stockImp = new StockImp();
+        mTill = new TillImp(new StockItemsNoDiscount(stockImp));
     }
 
     @Test
@@ -29,15 +30,13 @@ public class TillTests {
     @Test
     public void addupSingleApple() {
         StockType purchaseList[] = {StockType.APPLE};
-        Double expectedCost = new Double(0.6d);
-        assertEquals(expectedCost, mTill.getCost(purchaseList));
+        assertEquals(TestCosts.APPLE, mTill.getCost(purchaseList));
     }
 
     @Test
     public void addupSingleOrange() {
         StockType purchaseList[] = {StockType.ORANGE};
-        Double expectedCost = new Double(0.25d);
-        assertEquals(expectedCost, mTill.getCost(purchaseList));
+        assertEquals(TestCosts.ORANGE, mTill.getCost(purchaseList));
     }
 
     @Test
